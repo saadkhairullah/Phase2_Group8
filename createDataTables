@@ -16,3 +16,12 @@ CREATE TABLE store (
   Telno varchar(15),
   SURL varchar(255), 
 PRIMARY KEY(sID));
+
+CREATE TABLE vendor (
+  vID int(11) NOT NULL,
+  Vname varchar(30),
+  Street varchar(30),
+  City varchar(20),
+  StateAb varchar(3),
+  ZipCode int(11), 
+PRIMARY KEY(vID));
