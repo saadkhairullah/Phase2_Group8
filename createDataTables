@@ -4,3 +4,15 @@ CREATE TABLE item
    Sprice		  DECIMAL(4,2),
    Category	  VARCHAR(7),
   PRIMARY KEY(iId));
+
+CREATE TABLE store (
+  sID int(11) NOT NULL,
+  Sname varchar(24),
+  Street varchar(20),
+  City varchar(20),
+  StateAb varchar(3),
+  ZipCode int(11),
+  sDate date,
+  Telno varchar(15),
+  SURL varchar(255), 
+PRIMARY KEY(sID));
