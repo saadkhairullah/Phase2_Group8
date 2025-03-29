@@ -20,44 +20,44 @@ CREATE TABLE vendor (
 PRIMARY KEY(vId));
 
 CREATE TABLE vendor_store
-	(vId	INT		NOT NULL,
+  (vId	INT		NOT NULL,
    sId	INT		NOT NULL,
   PRIMARY KEY(vId, sId));
 
 CREATE TABLE item
-  (iId		    INT				     NOT NULL,
-   Iname		  VARCHAR(16),
-   Sprice		  DECIMAL(4,2),
-   Category	  VARCHAR(7),
+  (iId     INT		 NOT NULL,
+   Iname   VARCHAR(16),
+   Sprice  DECIMAL(4,2),
+   Category VARCHAR(7),
   PRIMARY KEY(iId));
 
   CREATE TABLE old_price
-	(iId	   INT	             NOT NULL,
-   oId		 INT		           NOT NULL,
-   Sprice	  DECIMAL(4,2),
+(iId	  INT	     NOT NULL,
+   oId	  INT	  NOT NULL,
+   Sprice DECIMAL(4,2),
    Sdate	  DATE,		
    Edate	  DATE,
    PRIMARY KEY (iId, oId),
   FOREIGN KEY(iId) REFERENCES item(iId));
 
 CREATE TABLE orders
-	(oId		  INT			NOT NULL,
-   Odate		DATE,
-   Ddate		DATE,
-   Amount		DECIMAL(5,2),
-   cId		  INT			NOT NULL,
-   sId		  INT			NOT NULL,
+  (oId	  INT		NOT NULL,
+   Odate  DATE,
+   Ddate  DATE,
+   Amount  DECIMAL(5,2),
+   cId	  INT		NOT NULL,
+   sId		INT	NOT NULL,
   PRIMARY KEY(oId, cId, sId),
   FOREIGN KEY(cId) REFERENCES CUSTOMER(cId),
   FOREIGN KEY(sId) REFERENCES STORE(sId));
 
 CREATE TABLE STORE_ITEM
-	(sId		INT		NOT NULL,
-   iId		INT		NOT NULL,
-   Scount		INT,
-   PRIMARY KEY(iId,sId),
-  FOREIGN KEY(iId) REFERENCES item(iId),
-  FOREIGN KEY(sId) REFERENCES store(sId));
+(sId	INT	NOT NULL,
+ iId	INT	NOT NULL,
+ Scount INT,
+PRIMARY KEY(iId,sId),
+FOREIGN KEY(iId) REFERENCES item(iId),
+FOREIGN KEY(sId) REFERENCES store(sId));
 
 CREATE TABLE customer (
   cId int(11) NOT NULL,
@@ -70,8 +70,8 @@ CREATE TABLE customer (
 PRIMARY KEY(cId));
 
 CREATE TABLE store_customer
-	(sID		INT		NOT NULL,
-   cId		INT		NOT NULL,
+ (sID	INT	NOT NULL,
+   cId	INT	NOT NULL,
   PRIMARY KEY(sId, cId),
   FOREIGN KEY(sId) REFERENCES store(sId),
   FOREIGN KEY(cId) REFERENCES customer(cId));
