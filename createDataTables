@@ -6,7 +6,7 @@ CREATE TABLE item
   PRIMARY KEY(iId));
 
 CREATE TABLE store (
-  sID int(11) NOT NULL,
+  sId int(11) NOT NULL,
   Sname varchar(24),
   Street varchar(20),
   City varchar(20),
@@ -15,23 +15,23 @@ CREATE TABLE store (
   sDate date,
   Telno varchar(15),
   SURL varchar(255), 
-PRIMARY KEY(sID));
+PRIMARY KEY(sId));
 
 CREATE TABLE vendor (
-  vID int(11) NOT NULL,
+  vId int(11) NOT NULL,
   Vname varchar(30),
   Street varchar(30),
   City varchar(20),
   StateAb varchar(3),
   ZipCode int(11), 
-PRIMARY KEY(vID));
+PRIMARY KEY(vId));
 
 CREATE TABLE customer (
-  cID int(11) NOT NULL,
+  cId int(11) NOT NULL,
   Cname varchar(24),
    LoyaltyScore INT, 
   Street varchar(20),
   City varchar(20),
   StateAb varchar(3),
   ZipCode int(11),
-PRIMARY KEY(cID));
+PRIMARY KEY(cId));
