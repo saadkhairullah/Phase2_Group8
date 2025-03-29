@@ -25,3 +25,13 @@ CREATE TABLE vendor (
   StateAb varchar(3),
   ZipCode int(11), 
 PRIMARY KEY(vID));
+
+CREATE TABLE customer (
+  cID int(11) NOT NULL,
+  Cname varchar(24),
+   LoyaltyScore INT, 
+  Street varchar(20),
+  City varchar(20),
+  StateAb varchar(3),
+  ZipCode int(11),
+PRIMARY KEY(cID));
