@@ -1,0 +1,6 @@
+CREATE TABLE item
+  (iId		    INT				     NOT NULL,
+   Iname		  VARCHAR(16),
+   Sprice		  DECIMAL(4,2),
+   Category	  VARCHAR(7),
+  PRIMARY KEY(iId));
