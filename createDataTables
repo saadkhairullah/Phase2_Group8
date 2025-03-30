@@ -91,4 +91,25 @@ CREATE TABLE vendor_item
      FOREIGN KEY(vId) REFERENCES vendor(vId),
      FOREIGN KEY(iId) REFERENCES item(iId));
 
+CREATE TABLE employee(
+   	 SSN	CHAR(11)	NOT NULL,
+   	 Ename	VARCHAR(30),
+   	 Sdate	date,
+   	 Edate	date,
+	Bdate	date,
+	Street varchar(30),
+  	City varchar(30),
+  	StateAb varchar(3),
+	ZipCode int,
+   	 sId int NOT NULL,
+   	 Etype	VARCHAR(15),
+    	Level 	VARCHAR(30),
+   	 Asalary	DECIMAL(7,2),
+   	 Hsalary	DECIMAL(4,2),
+   	 Agency	varchar(20),
+   	 Institute	VARCHAR(30),
+   	 Itype	VARCHAR(20),
+  	  PRIMARY KEY(SSN, sId),
+    FOREIGN KEY(sId) REFERENCES store(sId));
+
 
