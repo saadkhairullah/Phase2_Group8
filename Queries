@@ -6,3 +6,16 @@ SELECT E.SSN, E.Ename, E.Sdate, E.Asalary
 FROM employee E
 WHERE E.Etype = 'Fulltime' AND E.Sdate > '2023-01-01'
 ORDER BY E.Sdate ASC;
+
+SELECT I.Iname, CONCAT('$', FORMAT(I.Sprice, 2)) AS Sprice
+FROM item I
+
+SELECT I.Iname, CONCAT('$', FORMAT(I.Sprice, 2)) AS Sprice
+FROM item I
+ORDER BY I.Sprice ASC, I.Iname ASC
+LIMIT 5
+
+SELECT  DISTINCT I.Iname, CONCAT('$', FORMAT(I.Sprice, 2)) AS current_price,CONCAT('$', FORMAT(O.Sprice, 2)) AS old_price
+FROM item I JOIN old_price O ON I.iId = O.iId
+WHERE I.Sprice > 2 * O.Sprice
+
