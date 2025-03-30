@@ -28,3 +28,7 @@ FROM orders O
 JOIN customer C ON O.cId = C.cId 
 ORDER BY O.Odate ASC, C.Cname ASC;
 
+SELECT DISTINCT O.Odate, CONCAT('$', FORMAT(SUM(O.Amount), 2)) AS Total_amount, CONCAT('$', FORMAT(AVG(O.Amount), 2)) AS AVG_amount,CONCAT('$', FORMAT(MAX(O.Amount), 2)) AS MAX_amount
+FROM orders O
+GROUP BY O.Odate
+
