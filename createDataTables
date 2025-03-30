@@ -76,4 +76,19 @@ CREATE TABLE store_customer
   FOREIGN KEY(sId) REFERENCES store(sId),
   FOREIGN KEY(cId) REFERENCES customer(cId));
 
+CREATE TABLE order_item
+	(oId	INT		NOT NULL,
+     iId	INT		NOT NULL,
+     icount	INT,
+    PRIMARY KEY(oId, iId),
+    FOREIGN KEY(oId) REFERENCES orders(oId),
+    FOREIGN KEY(iId) REFERENCES item(iId));
+
+CREATE TABLE vendor_item
+	(vId	INT		NOT NULL,
+     iId	INT		NOT NULL,
+     PRIMARY KEY(vId, iId),
+     FOREIGN KEY(vId) REFERENCES vendor(vId),
+     FOREIGN KEY(iId) REFERENCES item(iId));
+
 
