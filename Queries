@@ -1,0 +1,4 @@
+SELECT c.Cname, c.Street, c.City, c.StateAb, c.ZipCode
+FROM customer c
+WHERE c.Cname LIKE 'A%' OR c.Cname LIKE 'S%'
+
