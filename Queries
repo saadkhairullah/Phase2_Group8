@@ -19,3 +19,12 @@ SELECT  DISTINCT I.Iname, CONCAT('$', FORMAT(I.Sprice, 2)) AS current_price,CONC
 FROM item I JOIN old_price O ON I.iId = O.iId
 WHERE I.Sprice > 2 * O.Sprice
 
+SELECT  DISTINCT I.Iname, CONCAT('$', FORMAT(I.Sprice, 2)) AS current_price,CONCAT('$', FORMAT(O.Sprice, 2)) AS old_price
+FROM item I JOIN old_price O ON I.iId = O.iId
+WHERE I.Sprice > 1.00 + O.Sprice
+
+SELECT O.Odate, C.Cname, CONCAT('$', FORMAT(O.Amount, 2)) AS total_spent
+FROM orders O
+JOIN customer C ON O.cId = C.cId 
+ORDER BY O.Odate ASC, C.Cname ASC;
+
