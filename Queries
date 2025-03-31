@@ -54,3 +54,28 @@ FROM customer c JOIN orders o ON c.cId = o.cId
 GROUP BY c.Cname
 ORDER BY o.Amount
 
+//Q14
+DELETE FROM store
+WHERE Sname = "Arlington Organic Market";
+
+//Q15
+INSERT INTO orders
+VALUES(1, "2024-1-12","2024-3-11", 19.27, 12, 1);
+
+INSERT INTO orders
+VALUES(101, "2024-6-12","2024-8-4", 12.32, NULL, 1);
+
+INSERT INTO orders
+VALUES(102, "2024-3-3","2024-5-5", 33.55, 51, 1);
+
+//Q16
+UPDATE store_customer
+SET sId = 2
+WHERE cId = 1;
+
+
+
+
+
+
+
