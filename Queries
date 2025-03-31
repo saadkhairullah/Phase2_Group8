@@ -1,37 +1,46 @@
+//Q1:
 SELECT c.Cname, c.Street, c.City, c.StateAb, c.ZipCode
 FROM customer c
 WHERE c.Cname LIKE 'A%' OR c.Cname LIKE 'S%'
 
+//Q2:
 SELECT E.SSN, E.Ename, E.Sdate, E.Asalary
 FROM employee E
 WHERE E.Etype = 'Fulltime' AND E.Sdate > '2023-01-01'
 ORDER BY E.Sdate ASC;
 
+//Q3:
 SELECT I.Iname, CONCAT('$', FORMAT(I.Sprice, 2)) AS Sprice
 FROM item I
 
+//Q4:
 SELECT I.Iname, CONCAT('$', FORMAT(I.Sprice, 2)) AS Sprice
 FROM item I
 ORDER BY I.Sprice ASC, I.Iname ASC
 LIMIT 5
 
+//Q5:
 SELECT  DISTINCT I.Iname, CONCAT('$', FORMAT(I.Sprice, 2)) AS current_price,CONCAT('$', FORMAT(O.Sprice, 2)) AS old_price
 FROM item I JOIN old_price O ON I.iId = O.iId
 WHERE I.Sprice > 2 * O.Sprice
 
+//Q6:
 SELECT  DISTINCT I.Iname, CONCAT('$', FORMAT(I.Sprice, 2)) AS current_price,CONCAT('$', FORMAT(O.Sprice, 2)) AS old_price
 FROM item I JOIN old_price O ON I.iId = O.iId
 WHERE I.Sprice > 1.00 + O.Sprice
 
+//Q7:
 SELECT O.Odate, C.Cname, CONCAT('$', FORMAT(O.Amount, 2)) AS total_spent
 FROM orders O
 JOIN customer C ON O.cId = C.cId 
 ORDER BY O.Odate ASC, C.Cname ASC;
 
+//Q8:
 SELECT DISTINCT O.Odate, CONCAT('$', FORMAT(SUM(O.Amount), 2)) AS Total_amount, CONCAT('$', FORMAT(AVG(O.Amount), 2)) AS AVG_amount,CONCAT('$', FORMAT(MAX(O.Amount), 2)) AS MAX_amount
 FROM orders O
 GROUP BY O.Odate
 
+//Q10:
 SELECT 
     (SELECT Cname FROM customer C JOIN orders O ON C.cId = O.cId WHERE O.Amount = (SELECT MAX(Amount) FROM orders)) AS MAX_Customer,
     (SELECT Odate FROM orders WHERE Amount = (SELECT MAX(Amount) FROM orders)) AS MAX_OrderDate,
@@ -41,6 +50,7 @@ SELECT
     CONCAT('$', FORMAT((SELECT MIN(Amount) FROM orders), 2)) AS MIN_Amount
 LIMIT 1
 
+//Q11:
 SELECT (SELECT I.Iname FROM item I JOIN old_price O ON O.iId = I.iId  WHERE O.Sprice = (SELECT MAX(O.Sprice) FROM old_price O)) AS Highest_item,
 CONCAT('$', FORMAT(MAX(O.Sprice), 2)) AS MAX_Price,
 (SELECT I.Iname FROM item I JOIN old_price O ON O.iId= I.iId  WHERE O.Sprice = (SELECT MIN(O.Sprice) FROM old_price O)) AS Lowest_item,
@@ -49,10 +59,19 @@ CONCAT('$', FORMAT(MIN(O.Sprice), 2)) AS MIN_Price,
 FROM old_price O, store S
 LIMIT 1
 
+//Q12:
 SELECT c.Cname AS Customer_Name, CONCAT('$', FORMAT(SUM(o.Amount), 2)) AS Total_Amount_Spent
 FROM customer c JOIN orders o ON c.cId = o.cId
 GROUP BY c.Cname
 ORDER BY o.Amount
+
+//Q13:
+SELECT c.Cname AS Customer_Name, COUNT(o.oId) AS Total_Orders
+FROM customer c
+JOIN orders o ON c.cId = o.cId
+GROUP BY c.Cname
+ORDER BY Total_Orders ASC
+
 
 //Q14
 DELETE FROM store
