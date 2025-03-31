@@ -48,3 +48,9 @@ CONCAT('$', FORMAT(MIN(O.Sprice), 2)) AS MIN_Price,
 (SELECT S.Sname FROM store S LIMIT 1) AS Store_Name
 FROM old_price O, store S
 LIMIT 1
+
+SELECT c.Cname AS Customer_Name, CONCAT('$', FORMAT(SUM(o.Amount), 2)) AS Total_Amount_Spent
+FROM customer c JOIN orders o ON c.cId = o.cId
+GROUP BY c.Cname
+ORDER BY o.Amount
+
