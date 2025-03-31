@@ -32,3 +32,11 @@ SELECT DISTINCT O.Odate, CONCAT('$', FORMAT(SUM(O.Amount), 2)) AS Total_amount, 
 FROM orders O
 GROUP BY O.Odate
 
+SELECT 
+    (SELECT Cname FROM customer C JOIN orders O ON C.cId = O.cId WHERE O.Amount = (SELECT MAX(Amount) FROM orders)) AS MAX_Customer,
+    (SELECT Odate FROM orders WHERE Amount = (SELECT MAX(Amount) FROM orders)) AS MAX_OrderDate,
+    CONCAT('$', FORMAT((SELECT MAX(Amount) FROM orders), 2)) AS MAX_Amount,
+    (SELECT Cname FROM customer C JOIN orders O ON C.cId = O.cId WHERE O.Amount = (SELECT MIN(Amount) FROM orders)) AS MIN_Customer,
+    (SELECT Odate FROM orders WHERE Amount = (SELECT MIN(Amount) FROM orders)) AS MIN_OrderDate,
+    CONCAT('$', FORMAT((SELECT MIN(Amount) FROM orders), 2)) AS MIN_Amount
+LIMIT 1
