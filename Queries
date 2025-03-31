@@ -40,3 +40,11 @@ SELECT
     (SELECT Odate FROM orders WHERE Amount = (SELECT MIN(Amount) FROM orders)) AS MIN_OrderDate,
     CONCAT('$', FORMAT((SELECT MIN(Amount) FROM orders), 2)) AS MIN_Amount
 LIMIT 1
+
+SELECT (SELECT I.Iname FROM item I JOIN old_price O ON O.iId = I.iId  WHERE O.Sprice = (SELECT MAX(O.Sprice) FROM old_price O)) AS Highest_item,
+CONCAT('$', FORMAT(MAX(O.Sprice), 2)) AS MAX_Price,
+(SELECT I.Iname FROM item I JOIN old_price O ON O.iId= I.iId  WHERE O.Sprice = (SELECT MIN(O.Sprice) FROM old_price O)) AS Lowest_item,
+CONCAT('$', FORMAT(MIN(O.Sprice), 2)) AS MIN_Price,
+(SELECT S.Sname FROM store S LIMIT 1) AS Store_Name
+FROM old_price O, store S
+LIMIT 1
