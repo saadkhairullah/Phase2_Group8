@@ -67,8 +67,7 @@ ORDER BY o.Amount
 
 //Q13:
 SELECT c.Cname AS Customer_Name, COUNT(o.oId) AS Total_Orders
-FROM customer c
-JOIN orders o ON c.cId = o.cId
+FROM customer c JOIN orders o ON c.cId = o.cId
 GROUP BY c.Cname
 ORDER BY Total_Orders ASC
 
